@@ -34,11 +34,12 @@
     <link href="{{url('/')}}/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
     <link href="{{url('/')}}/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS -->
-    <!-- DATATABLE PLUGINS -->
+    <!-- BEGIN DATATABLE PLUGINS -->
     <link href="{{url('/')}}/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css"/>
     <link href="{{url('/')}}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css"
           rel="stylesheet" type="text/css"/>
-    <!-- DATATABLE PLUGINS -->
+    <script src="{{url('/')}}/assets/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
+    <!-- END DATATABLE PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="{{url('/')}}/assets/global/css/components.min.css" rel="stylesheet" id="style_components"
           type="text/css"/>
