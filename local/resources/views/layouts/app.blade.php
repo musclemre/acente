@@ -12,6 +12,7 @@
     <meta charset="utf-8"/>
     <title>Acente Yazılımı Panel</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Acente Yazılımı Panel"
           name="description"/>
@@ -38,7 +39,6 @@
     <link href="{{url('/')}}/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css"/>
     <link href="{{url('/')}}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css"
           rel="stylesheet" type="text/css"/>
-    <script src="{{url('/')}}/assets/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
     <!-- END DATATABLE PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="{{url('/')}}/assets/global/css/components.min.css" rel="stylesheet" id="style_components"
@@ -52,6 +52,7 @@
     <link href="{{url('/')}}/assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="{{url('/')}}/favicon.ico"/>
+    @yield('css')
 </head>
 <!-- END HEAD -->
 
@@ -1328,6 +1329,7 @@
 <script src="{{url('/')}}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="{{url('/')}}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"
         type="text/javascript"></script>
+<script src="{{url('/')}}/assets/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
 <!-- DATATABLE PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="{{url('/')}}/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -1341,6 +1343,9 @@
 <script src="{{url('/')}}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <script src="{{url('/')}}/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
+
+@yield('js')
+
 <script>
     $(document).ready(function () {
         $('#clickmewow').click(function () {
