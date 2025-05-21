@@ -1,0 +1,38 @@
+Laravel Kimlik Doğrulama Sistemi (Daha Fazlasını Okuyun: Laravel'de Kullanıcı Kimlik Doğrulaması )
+CSRF'den (Siteler Arası İstek Sahteciliği) Kaynaklanan Laravel Güvenlik Açıklarını Azaltın
+XSS'e (Siteler Arası Komut Dosyası Çalıştırma) Karşı Koruma
+SQL Enjeksiyonu
+
+
+Psexec Kurulumu:
+Psexec aracını Microsoft sitesinden idirmeniz gerekiyor. İndir
+İndirdiğiniz dosyaların tamamınıC:\Windows\System32 altına kopyalayın. (yönetici izni gerektirir)• Command Promp (CMD) admin olarak çalıştırın.• psexec yazın ve karşınıza çıkan ekranı onaylayın.
+
+Psexec ile uzak makineye bağlanmak:
+
+Uzak makinada işlem yapmak için öncelikle uzak bilgisayara bağlanmamız gerekiyor. Aşağıda ki komutu düzenleyerek kullanabilirsiniz.
+
+psexec \\COMPUTERNAME -u COMPUTERNAME\Administrator -p parola cmd.exe
+Uzak bilgisayarımıza bağlandıktan sonra aşağıdaki örneklerde olduğu gibi işlem yapabilirsiniz.
+
+Uzak bilgisayarda uygulama çalıştırmak:
+
+ 	psexec \\COMPUTERNAME "c: \Program Files\ugulama.exe"
+• Uzak bilgisayarın ip adres bilgilerini okuma:
+
+psexec \\COMPUTERNAME ipconfig -all
+• Uzak bilgisayardan lokale dosya kopyalama:
+
+ 	psexec \\COMPUTERNAME -s cmd /c copy \\pcadı1\dosya\setup.exe C:\test
+• Uzak bilgisayardan program kaldırma:
+
+ 	psexec “%ProgramFiles%\Office\uninstall.exe” /S 
+• Uzak bilgisayarda regedit çalıştırma:
+
+psexec -s -i regedit.exe
+• Uzak bilgisayara mesaj gönderme:
+
+ 	psexec \\COMPUTERNAME msg * merhaba
+• Uzak bilgisayarın seri numarasını öğrenme:
+
+psexec \\COMPUTERNAME wmic bios get serialnumber
