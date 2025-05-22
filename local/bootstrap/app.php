@@ -11,10 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->alias([
-			'yetki' => \App\Http\Middleware\Yetki::class,
-			'role' => \App\Http\Middleware\CheckRole::class
-		]);
+        //
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
