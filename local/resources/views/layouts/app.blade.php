@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <!--[if IE 8]>
-<html lang="en" class="ie8 no-js"> <![endif]-->
+<html lang="tr" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]>
-<html lang="en" class="ie9 no-js"> <![endif]-->
+<html lang="tr" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en">
+<html lang="tr">
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 
@@ -12,6 +12,7 @@
     <meta charset="utf-8"/>
     <title>Acente Yazılımı Panel</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Acente Yazılımı Panel"
           name="description"/>
@@ -34,11 +35,11 @@
     <link href="{{url('/')}}/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
     <link href="{{url('/')}}/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS -->
-    <!-- DATATABLE PLUGINS -->
+    <!-- BEGIN DATATABLE PLUGINS -->
     <link href="{{url('/')}}/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css"/>
     <link href="{{url('/')}}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css"
           rel="stylesheet" type="text/css"/>
-    <!-- DATATABLE PLUGINS -->
+    <!-- END DATATABLE PLUGINS -->
     <!-- BEGIN THEME GLOBAL STYLES -->
     <link href="{{url('/')}}/assets/global/css/components.min.css" rel="stylesheet" id="style_components"
           type="text/css"/>
@@ -51,6 +52,7 @@
     <link href="{{url('/')}}/assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="{{url('/')}}/favicon.ico"/>
+    @yield('css')
 </head>
 <!-- END HEAD -->
 
@@ -513,24 +515,28 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-				
                 <li class="heading">
                     <h3 class="uppercase">Yönetici</h3>
                 </li>
-				@if(App\Libraries\Helpers::Modul('kullanici'))
-                <li class="nav-item {{ request()->is('panel/kullanici*') ? 'active' : '' }}">
-                    <a href="#" class="nav-link nav-toggle">
+                <li class="nav-item">
+                    <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-users"></i>
                         <span class="title">Kullanıcılar</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-						{{App\Libraries\Helpers::AdminMenu('Kullanıcı Ekle','panel/kullanicilar/ekle','kullanici','y2','<i class="fa fa-user-plus"></i> ')}}
-						{{App\Libraries\Helpers::AdminMenu('Kullanıcılar','panel/kullanicilar','kullanici','y1','<i class="fa fa-users"></i> ')}}
-                        
+                        <li class="nav-item">
+                            <a href="" class="nav-link ">
+                                <span class="title">Kullanıcı Ekle</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link ">
+                                <span class="title">Kullanıcı Listesi</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-				@endif
                 <li class="nav-item">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-anchor"></i>
@@ -1323,9 +1329,7 @@
 <script src="{{url('/')}}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="{{url('/')}}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"
         type="text/javascript"></script>
-		
-		@yield("js")
-		
+<script src="{{url('/')}}/assets/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
 <!-- DATATABLE PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="{{url('/')}}/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -1339,6 +1343,9 @@
 <script src="{{url('/')}}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <script src="{{url('/')}}/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
+
+@yield('js')
+
 <script>
     $(document).ready(function () {
         $('#clickmewow').click(function () {

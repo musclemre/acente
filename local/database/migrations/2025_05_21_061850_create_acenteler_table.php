@@ -14,7 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->string('kod', 8)->unique();
             $table->string('acente_adi');
-            $table->string('acente_aciklama');
+            $table->string('acente_aciklama')->nullable();
+            $table->string('sorumlu_adi')->nullable();
+            $table->string('sorumlu_telefon')->nullable();
             $table->string('slug')->unique();
             $table->boolean('durum')->default(1)->comment('0=>Pasif, 1=>Aktif');
             $table->timestamps();
