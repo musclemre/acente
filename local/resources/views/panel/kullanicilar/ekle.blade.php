@@ -44,7 +44,8 @@
 					<div class="form-body">
 						
 						<div class="form-group">
-							<label class="control-label col-md-3">Ad Soyad
+							<label class="control-label col-md-3">
+								Ad Soyad
 								<span class="required"> * </span>
 							</label>
 							<div class="col-md-9">
@@ -53,7 +54,8 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="control-label col-md-3">Kullanıcı Adı
+							<label class="control-label col-md-3">
+								Kullanıcı Adı
 								<span class="required"> * </span>
 							</label>
 							<div class="col-md-9">
@@ -62,7 +64,8 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="control-label col-md-3">Şifre
+							<label class="control-label col-md-3">
+								Şifre
 								<span class="required"> * </span>
 							</label>
 							<div class="col-md-9">
@@ -70,7 +73,8 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3">Telefon
+							<label class="control-label col-md-3">
+								Telefon
 							</label>
 								<div class="col-md-9">
 									<input autocomplete="off" name="telefon" type="text" value="{{old('telefon')}}" maxlength="11" class="form-control">
@@ -78,7 +82,10 @@
 						</div>
 						
 						<div class="form-group">
-							<label class="control-label col-md-3">Tam Kullanıcı Yetkisi <span class="required"> * </span></label>
+							<label class="control-label col-md-3">
+								Tam Kullanıcı Yetkisi
+								<span class="required"> * </span>
+							</label>
 							<div class="col-md-9">
 							
 							<select id="full_yetki" class="form-control" name="full_yetki">
@@ -91,7 +98,10 @@
 						
 						<div id="d_kategori">
 							<div class="form-group">
-								<label class="control-label col-md-3">Modüller <span class="required"> * </span></label>
+								<label class="control-label col-md-3">
+									Modüller 
+									<span class="required"> * </span>
+								</label>
 								<div class="col-md-9">
 								
 									<div class="panel-group accordion" id="accordion1" style="margin: 0">

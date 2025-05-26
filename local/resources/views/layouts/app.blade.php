@@ -16,6 +16,7 @@
     <meta content="Acente Yazılımı Panel"
           name="description"/>
     <meta content="" name="author"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
           type="text/css"/>
@@ -33,6 +34,8 @@
     <link href="{{url('/')}}/assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css"/>
     <link href="{{url('/')}}/assets/global/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" type="text/css"/>
     <link href="{{url('/')}}/assets/global/plugins/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css"/>
+    <link href="{{url('/')}}/assets/global/plugins/bootstrap-sweetalert/sweetalert.css" rel="stylesheet"
+          type="text/css"/>
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- DATATABLE PLUGINS -->
     <link href="{{url('/')}}/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css"/>
@@ -51,6 +54,7 @@
     <link href="{{url('/')}}/assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="{{url('/')}}/favicon.ico"/>
+    @yield('css')
 </head>
 <!-- END HEAD -->
 
@@ -513,24 +517,40 @@
                         <span class="selected"></span>
                     </a>
                 </li>
-				
+
                 <li class="heading">
                     <h3 class="uppercase">Yönetici</h3>
                 </li>
-				@if(App\Libraries\Helpers::Modul('kullanici'))
-                <li class="nav-item {{ request()->is('panel/kullanici*') ? 'active' : '' }}">
-                    <a href="#" class="nav-link nav-toggle">
-                        <i class="icon-users"></i>
-                        <span class="title">Kullanıcılar</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-						{{App\Libraries\Helpers::AdminMenu('Kullanıcı Ekle','panel/kullanicilar/ekle','kullanici','y2','<i class="fa fa-user-plus"></i> ')}}
-						{{App\Libraries\Helpers::AdminMenu('Kullanıcılar','panel/kullanicilar','kullanici','y1','<i class="fa fa-users"></i> ')}}
-                        
-                    </ul>
-                </li>
-				@endif
+                @if(App\Libraries\Helpers::Modul('kullanici'))
+                    <li class="nav-item {{ request()->is('panel/kullanici*') ? 'active' : '' }}">
+                        <a href="#" class="nav-link nav-toggle">
+                            <i class="icon-users"></i>
+                            <span class="title">Kullanıcılar</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            {{App\Libraries\Helpers::AdminMenu('Kullanıcı Ekle','panel/kullanicilar/ekle','kullanici','y2','<i class="fa fa-user-plus"></i> ')}}
+                            {{App\Libraries\Helpers::AdminMenu('Kullanıcılar','panel/kullanicilar','kullanici','y1','<i class="fa fa-users"></i> ')}}
+
+                        </ul>
+                    </li>
+                @endif
+
+                @if(App\Libraries\Helpers::Modul('musteri'))
+                    <li class="nav-item {{ request()->is('panel/musteriler*') ? 'active' : '' }}">
+                        <a href="#" class="nav-link nav-toggle">
+                            <i class="icon-users"></i>
+                            <span class="title">Müşteriler</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                            {{App\Libraries\Helpers::AdminMenu('Müşteri Ekle','panel/musteriler/ekle','musteri','y2','<i class="fa fa-user-plus"></i> ')}}
+                            {{App\Libraries\Helpers::AdminMenu('Müşteriler','panel/musteriler','musteri','y1','<i class="fa fa-users"></i> ')}}
+
+                        </ul>
+                    </li>
+                @endif
+
                 <li class="nav-item">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-anchor"></i>
@@ -953,7 +973,8 @@
                                         </div>
                                         <div class="cont-col2">
                                             <div class="desc"> New order received with
-                                                <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                                <span
+                                                    class="label label-sm label-success"> Reference Number: DR23923 </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1091,7 +1112,8 @@
                                         </div>
                                         <div class="cont-col2">
                                             <div class="desc"> New order received with
-                                                <span class="label label-sm label-success"> Reference Number: DR23923 </span>
+                                                <span
+                                                    class="label label-sm label-success"> Reference Number: DR23923 </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1323,9 +1345,11 @@
 <script src="{{url('/')}}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="{{url('/')}}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"
         type="text/javascript"></script>
-		
-		@yield("js")
-		
+<script src="{{url('/')}}/assets/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
+
+<script src="{{url('/')}}/assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js" type="text/javascript"></script>
+<script src="{{url('/')}}/assets/pages/scripts/ui-sweetalert.min.js" type="text/javascript"></script>
+
 <!-- DATATABLE PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="{{url('/')}}/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -1339,6 +1363,11 @@
 <script src="{{url('/')}}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <script src="{{url('/')}}/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
+
+<script src="{{url('/')}}/assets/js/delete.js"></script>
+
+@yield('js')
+
 <script>
     $(document).ready(function () {
         $('#clickmewow').click(function () {
@@ -1347,5 +1376,15 @@
     })
 </script>
 </body>
+
+<script>
+    @if(session()->has('ok'))
+    sweetAlert('Başarılı!', '{{session()->get('ok')}}', 'success');
+    @endif
+    @if(session()->has('hata'))
+    sweetAlert('Başarısız!', '{{session()->get('hata')}}', 'error');
+    @endif
+</script>
+
 
 </html>
